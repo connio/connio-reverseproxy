@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+    image: "quitra/connio-nginx-test"
+        ports:
+            - '80:80'
+            - '443:443'
+        restart: "always"
+        networks:
+            - connio
+        
+        environment:
+            DEPLOY_DOMAIN: ${DEPLOY_DOMAIN}
+            API_PORT: "8081"
+            API_DOMAIN: api.${DEPLOY_DOMAIN}
+            APP_PORT: "8082"
+            APP_DOMAIN: app.${DEPLOY_DOMAIN}
+            FLOW_PORT: "8083"
+            FLOW_DOMAIN: flow.${DEPLOY_DOMAIN}
+            DASHBOARD_PORT: "8084"
+            DASHBOARD_DOMAIN: dashboard.${DEPLOY_DOMAIN}
+            REPORT_PORT: "8085"
+            REPORT_DOMAIN: report.${DEPLOY_DOMAIN}
+            SSO_PORT: "8086"
+            SSO_DOMAIN: sso.${DEPLOY_DOMAIN}
+        volumes:
+            - /etc/letsencrypt/:/etc/letsencrypt/
+            - /opt/connio/.well-known/acme-challenge:/.well-known/acme-challenge/
