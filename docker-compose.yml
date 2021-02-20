@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-    image: "quitra/connio-nginx-test"
+    image: "conniot/reverseproxy"
         ports:
             - '80:80'
             - '443:443'
